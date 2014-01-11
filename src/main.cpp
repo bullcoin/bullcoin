@@ -1110,7 +1110,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees, unsigned int nBits)
     int64 nSubsidy = nBlockRewardStartCoin;
 
     //every 1000 blocks cut 0.1%
-    if(nHeight % 1000 == 0){
+    if(nHeight > 10000){
         int mulit = (nHeight / 1000);
         if(mulit <= 1000){
             float sub = ((1000 - mulit)/1000);
