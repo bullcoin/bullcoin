@@ -1112,10 +1112,12 @@ int64 static GetBlockValue(int nHeight, int64 nFees, unsigned int nBits)
     //every 1000 blocks cut 0.1%
     if(nHeight > 10000){
         int mulit = (nHeight / 1000);
-        if(mulit <= 1000){
-            float sub = ((1000 - mulit)/1000);
-            nSubsidy = nSubsidy * sub;
+
+        if(mulit > 999){
+           mulit = 999;
         }
+        int _nSubsidy = 1000 - mulit;
+        nSubsidy = _nSubsidy * COIN;
     }
 
     // Minimum subsidy is 1
